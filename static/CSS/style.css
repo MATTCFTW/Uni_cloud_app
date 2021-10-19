@@ -1,0 +1,126 @@
+.pagetitle {
+ color: #800080;
+} 
+.title-404 {
+  margin-top: 30px;
+  font-family: Inconsolata;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 30px;
+  line-height: 25px;
+  letter-spacing: -0.08em;
+  text-transform: uppercase;
+}
+
+.container-404 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
+  margin-top: 100px;
+  justify-content: space-evenly;
+  width: 70%;
+}
+
+.text-container-404 {
+  width: 100%;
+}
+
+.text-container-404 h3 {
+  font-family: Space Mono;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 64px;
+  line-height: 95px;
+  letter-spacing: -0.035em;
+}
+
+.inner-404 {
+  width: 80%;
+  line-height: 36px;
+  margin-top: 30px;
+  font-family: Space Mono;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 24px;
+  line-height: 36px;
+  letter-spacing: -0.035em;
+  color: #4f4f4f;
+}
+
+.button-404 {
+  padding-top: 20px;
+}
+
+.button-404 {
+  padding: 15px;
+  background-color: #333;
+  color: #fff;
+  height: 58px;
+  width: 216px;
+  font-family: Space Mono;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 14px;
+  line-height: 21px;
+  letter-spacing: -0.035em;
+  text-transform: uppercase;
+  margin-top: 15px;
+}
+@media only screen and (max-width: 1090px) {
+  .title-404 {
+    margin-left: 10px;
+    margin-top: 20px;
+  }
+  .container-404 {
+    display: block;
+    margin-top: 10px;
+    margin-left: 20px;
+    width: 90%;
+  }
+  .text-container-404,
+  h3,
+  .inner-404 {
+    width: 100%;
+    padding: 0px;
+  }
+  .text-container-404 h3 {
+    font-size: 45px;
+    line-height: 71px;
+    margin-bottom: 10px;
+  }
+  .inner-404 {
+    font-size: 18px;
+    line-height: 27px;
+    margin-top: 5px;
+  }
+}
+
+@media only screen and (max-width: 375px) {
+  .title-404 {
+    margin-left: 10px;
+    margin-top: 20px;
+  }
+  .container-404 {
+    display: block;
+    margin-top: 10px;
+    margin-left: 20px;
+    width: 90%;
+  }
+  .text-container-404,
+  h3,
+  .inner-404 {
+    width: 100%;
+    padding: 0px;
+  }
+  .text-container-404 h3 {
+    font-size: 45px;
+    line-height: 71px;
+    margin-bottom: 10px;
+  }
+  .inner-404 {
+    font-size: 18px;
+    line-height: 27px;
+    margin-top: 5px;
+  }
+}

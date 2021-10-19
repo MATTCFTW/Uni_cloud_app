@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<head>
+ <link rel="stylesheet" type="text/css" href="/static/CSS/style.css">
+ <link rel="preconnect" href="https://fonts.gstatic.com" />
+ <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet"/>
+</head>
+
+<div class="container container-404">
+ <div>
+  <h3 class="title-404"> 404 - {{ request.path }}</h3>
+  <div class="text-container-404">
+   <h3>I have bad news for you</h3>
+    <div class="inner-404">
+     <p> The requested URL was not found on the server. The page you are looking for might be removed or is temporarily unavailable. </p>
+    </div>
+    <a href="{{ url_for('index') }} " class="btn button-404">Back to homepage</a>
+  </div>
+ </div>
+</div>
+
+{% endblock %} 
