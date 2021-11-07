@@ -15,3 +15,25 @@ p {
  padding: 3rem 1.5rem;
  text-align: center;
 } 
+
+.bold-text {
+    color: #989c9e !important
+}
+
+.footer{
+    position: fixed;
+    height: 100px;
+    bottom: 0;
+    width: 105%;
+    background: #262626;
+    color: #627482 !important;
+}
+
+.navbar{
+    background-color: #262626;
+    height: 80px;
+}
+
+.navbar-logo{
+    max-height: 60px;
+}

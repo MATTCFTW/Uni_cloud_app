@@ -67,6 +67,35 @@
   text-transform: uppercase;
   margin-top: 15px;
 }
+
+
+h1{
+    color: #FDFDFD;
+    padding-bottom: 10px;
+}
+
+.index-text{
+    color: #627482
+}
+
+.bg{
+    background-image: url("/static/images/background.jpeg") ;
+    height: 89vh;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.index-box{
+    background-color: #262626;
+    height: 25%;
+    width: 25%;
+    opacity: 90%;
+    text-align: center;
+    margin:auto;
+    transform: translate(0, 80%);
+}
+
 @media only screen and (max-width: 1090px) {
   .title-404 {
     margin-left: 10px;
@@ -93,6 +122,10 @@
     font-size: 18px;
     line-height: 27px;
     margin-top: 5px;
+  }
+  .index-box{
+    width:fit-content;
+    height: fit-content;
   }
 }
 
