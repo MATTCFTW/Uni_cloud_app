@@ -1,5 +1,12 @@
-import logging
-from flask import Flask, render_template, request
+import logging, flask, json
+
+from flask import Flask, render_template, request, jsonify
+from pymongo import MongoClient
+from bson.json_util import dumps 
+
+cluster=MongoClient( "mongodb+srv://Admin:eR4xVrLSpXr7Pecn@assignment.xtiqh.mongodb.net/myFirstDatabase?retryWrites=true&w=majority")
+db=cluster["Assignment"]
+collection=db["Furniture"]
 
 app = Flask(__name__)
 app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 0 #stop using outdated css
@@ -20,6 +27,26 @@ def register():
 @app.route('/login')
 def login():
  return render_template('login.html')
+
+#JSON of all furniture
+@app.route('/furniture', methods=['GET'])
+def get_all_furniture():
+    output = []
+    for x in collection.find():
+        output.append({"item": x["item"]})
+    return jsonify({"result": output})
+
+#JSON of single furniture from URL
+@app.route('/furniture/<item>', methods=['GET'])
+def get_single_furniture(item):
+    x = collection.find_one({"item": item})
+    if x:
+        output = {"item": x["item"]}
+    else:
+        output = "No results found"
+    
+    return jsonify({"result": output})
+    
 
 @app.errorhandler(500)
 def server_error(e):
