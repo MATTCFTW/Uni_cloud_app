@@ -8,9 +8,13 @@
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA==" crossorigin="anonymous"/>
   <link href="static/CSS/custom.css" rel="stylesheet">
+  <script src="https://www.gstatic.com/firebasejs/ui/4.4.0/firebase-ui-auth.js"></script>
+  <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.4.0/firebase-ui-auth.css" /> 
+  <script src="/static/JS/authentication.js"></script>
+
  </head>
 
- {% set navigation_bar = [('/', 'index', 'Index'), ('/products', 'products', 'Products'), ('/register','register','Register'), ('/login','login','Login')] -%}
+ {% set navigation_bar = [('/', 'index', 'Index'), ('/products', 'products', 'Products'), ('/account','account','Account')] -%}
 
  {% set active_page = active_page|default('index') -%} 
 
@@ -20,18 +24,17 @@
    <div class="navbar-brand">
      <img class="navbar-logo" src="/static/images/logo.png">
    </div>
-   <button class="navbar-toggler" type="button" data-toggle="collapse" datatarget="#navbarSupportedContent" aria-controls="#navbarSupportedContent" ariaexpanded="false" aria-label="Toggle navigation">
+   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="#navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
    </button>
-   <div class="collapse navbar-collapse" id="#navbarSupportedContent">
+   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav ml-auto">
-
      {% for href, id, caption in navigation_bar %}
       {% if id == active_page %}
        <li class="nav-item active">
         <a class="nav-link" href="{{ href|e }}">{{ caption|e }} <span class="sr-only">(current)</span></a>
        </li>
-      {% else %}
+       {% else %}
        <li class="nav-item">
         <a class="nav-link" href="{{ href|e }}">{{ caption|e }}</a>
        </li>
@@ -70,9 +73,32 @@
   </footer>
 
   <!-- Scripts -->
+  <!-- Bootstrap -->
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+  <!-- Firebase JS -->
+  <script src="https://www.gstatic.com/firebasejs/8.9.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.9.0/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.9.0/firebase-analytics.js"></script>
   
+  <script>
+  // Firebase configuration
+   var firebaseConfig = {
+    apiKey: "AIzaSyDME5e_mYAuJAwwoOZZCGG7l5sPpGeqE84",
+     authDomain: "assignment-328920.firebaseapp.com",
+     // databaseURL: "https://assignment-328920.firebaseio.com", 
+     projectId: "assignment-328920",
+     storageBucket: "assignment-328920.appspot.com",
+     messagingSenderId: "1037443564008",
+     appId: "1:1037443564008:web:4ae5d6d2b4f351550b645d",
+     measurementId: "G-EZ0MP31PR2"
+   };
+   // Initialize Firebase
+   firebase.initializeApp(firebaseConfig);
+   firebase.analytics();
+  </script>
+ 
+
  </body>
 </html>

@@ -1,8 +1,14 @@
-import logging, flask, json, requests
+import logging, flask, json, requests, datetime
 
 from flask import Flask, render_template, request, jsonify
 from pymongo import MongoClient
 from bson.json_util import dumps 
+from google.auth.transport import requests as Requests_google #renamed due to overlap
+from google.cloud import datastore
+import google.oauth2.id_token
+
+firebase_request_adapter = Requests_google.Request()
+datastore_client = datastore.Client()
 
 cluster=MongoClient( "mongodb+srv://Admin:eR4xVrLSpXr7Pecn@assignment.xtiqh.mongodb.net/myFirstDatabase?retryWrites=true&w=majority")
 db=cluster["Assignment"]
@@ -10,6 +16,7 @@ collection=db["Furniture"]
 
 app = Flask(__name__)
 
+#app routes
 @app.route('/')
 @app.route('/index')
 def index():
@@ -19,18 +26,26 @@ def index():
 def products():
     return render_template('products.html')
 
-@app.route('/register')
-def register():
-    return render_template('register.html')
-
-@app.route('/login')
+@app.route('/account')
 def login():
-    return render_template('login.html')
+    # Verify Firebase auth.
+    id_token = request.cookies.get("token")
+    error_message = None
+    claims = None
+    if id_token:
+        try: 
+            claims = google.oauth2.id_token.verify_firebase_token(id_token, firebase_request_adapter)
+        except ValueError as exc:
+            # This will be raised if the token is expired or any other
+            # verification checks fail.
+            error_message = str(exc)           
+    return render_template('account.html',  user_data=claims, error_message=error_message) 
+
 
 #JSON of all furniture
-@app.route("/mongodbdisplay", methods=["GET"])
+@app.route("/furniture", methods=["GET"])
 def mongodbdisplay():
-    url = "https://europe-west2-assignment-328920.cloudfunctions.net/mongodbdisplay"
+    url = "https://europe-west2-assignment-328920.cloudfunctions.net/Service_Mesh_Layer_Function"
     response = requests.get(url)
     return(response.content) 
 
