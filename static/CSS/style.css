@@ -86,6 +86,14 @@ h1{
     background-size: cover;
 }
 
+.bg-login{
+    background-image: url("/static/images/background2.jpeg") ;
+    height: 89vh;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
 .index-box{
     background-color: #262626;
     height: 25%;
@@ -94,6 +102,20 @@ h1{
     text-align: center;
     margin:auto;
     transform: translate(0, 80%);
+}
+
+.login-box{
+    background-color: #262626;
+    height: 25%;
+    width: 25%;
+    opacity: 90%;
+    text-align: center;
+    margin:auto;
+    transform: translate(0, 50%);
+}
+
+.firebase-box{
+    padding-top: 10%;
 }
 
 @media only screen and (max-width: 1090px) {
@@ -124,6 +146,10 @@ h1{
     margin-top: 5px;
   }
   .index-box{
+    width:fit-content;
+    height: fit-content;
+  }
+  .login.box{
     width:fit-content;
     height: fit-content;
   }
