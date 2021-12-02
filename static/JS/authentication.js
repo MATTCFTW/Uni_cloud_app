@@ -19,6 +19,7 @@ window.addEventListener('load', function () {
             // User is signed in, so display the "sign out" button and login info.
             document.getElementById('sign-out').hidden = false;
             document.getElementById('login-info').hidden = false; 
+            document.getElementById('orders').hidden = false; 
             console.log(`Signed in as ${user.displayName} (${user.email})`);
             user.getIdToken().then(function (token) {
                 document.cookie = "token=" + token;
@@ -30,7 +31,8 @@ window.addEventListener('load', function () {
             ui.start('#firebaseui-auth-container', uiConfig);
             // Update the login state indicators.
             document.getElementById('sign-out').hidden = true;
-            document.getElementById('login-info').hidden = true; 
+            document.getElementById('login-info').hidden = true;
+            document.getElementById('orders').hidden = true;  
             // Clear the token cookie.
             document.cookie = "token=";
         }
@@ -39,3 +41,4 @@ window.addEventListener('load', function () {
         alert('Login failed: ' + error)
     });
 });
+

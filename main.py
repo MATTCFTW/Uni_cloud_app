@@ -26,6 +26,10 @@ def index():
 def products():
     return render_template('products.html')
 
+@app.route('/orders')
+def orders():
+    return render_template('orders.html')
+
 @app.route('/account')
 def login():
     # Verify Firebase auth.
