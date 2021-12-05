@@ -20,6 +20,9 @@ fetch('https://assignment-328920.ew.r.appspot.com/furniture')
       //display item information
       div.innerHTML = 'Item: ' + data[i].item;
       mainContainer.appendChild(div);
+      //link for getting more info on the product
+        
+      
       //creates a button unique to each product
       var buttonContainer = document.getElementById(data[i].id_);
       var btn = document.createElement('BUTTON');
@@ -33,6 +36,7 @@ fetch('https://assignment-328920.ew.r.appspot.com/furniture')
       btn.classList.add("order-button", "btn", "btn-dark");
       buttonContainer.appendChild(btn); 
     }
+
     UsercookieValue = getCookie("token");
     //if user is logged in
     if(UsercookieValue){

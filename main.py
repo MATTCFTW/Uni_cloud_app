@@ -1,4 +1,4 @@
-import logging, flask, json, requests, datetime
+import logging, flask, json, requests
 
 from flask import Flask, render_template, request, jsonify
 from pymongo import MongoClient
@@ -10,6 +10,7 @@ import google.oauth2.id_token
 firebase_request_adapter = Requests_google.Request()
 datastore_client = datastore.Client()
 
+#MongoDB connection
 cluster=MongoClient( "mongodb+srv://Admin:eR4xVrLSpXr7Pecn@assignment.xtiqh.mongodb.net/myFirstDatabase?retryWrites=true&w=majority")
 db=cluster["Assignment"]
 collection=db["Furniture"]
