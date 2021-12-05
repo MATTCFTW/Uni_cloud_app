@@ -118,6 +118,14 @@ h1{
     padding-top: 10%;
 }
 
+.product-box{
+    font-size: 14px;
+} 
+
+.order-button{
+    display:none
+}
+
 @media only screen and (max-width: 1090px) {
   .title-404 {
     margin-left: 10px;

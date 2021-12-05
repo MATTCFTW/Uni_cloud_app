@@ -1,9 +1,12 @@
 {% extends "base.html" %}
-
-{% set active_page = "about" %}
-
 {% block content %}
+<head>
+ <link rel="stylesheet" type="text/css" href="/static/CSS/style.css">
+</head>
 
-<p>products listed here</p>
+<p>products listed here:</p>
+<div id="products"></div>
+
+<script src="/static/JS/products.js"></script>
 
 {% endblock %} 

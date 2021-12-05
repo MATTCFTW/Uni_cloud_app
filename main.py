@@ -61,7 +61,7 @@ def get_single_furniture(item):
         output = {"item": x["item"],"id_": x["id_"]}
     else:
         output = "No results found"  
-    return jsonify({"result": output})
+    return jsonify(output)
 
 @app.errorhandler(500)
 def server_error(e):
