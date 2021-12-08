@@ -119,12 +119,31 @@ h1{
 }
 
 .product-box{
-    font-size: 14px;
+    align-content: center;
+    outline-style: solid;
+    outline-color: #262626;
+    outline-width:thin;
 } 
 
 .order-button{
     display:none
 }
+
+.product-title{
+    font-size: 25px;
+    text-align: center;
+    font-weight: 500;
+    font-family: monospace;
+}
+
+.product-image{
+    width: 60%;
+    height: 80%;
+    padding-left: 5%;
+    padding-right: 5%; 
+}
+
+
 
 @media only screen and (max-width: 1090px) {
   .title-404 {
