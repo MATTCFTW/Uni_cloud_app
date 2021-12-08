@@ -22,10 +22,12 @@ window.addEventListener('load', function () {
             document.getElementById('login-info').hidden = false; 
             document.getElementById('orders').hidden = false; 
             console.log(`Signed in as ${user.displayName} (${user.email})`);
+            const email = user.email
             user.getIdToken().then(function (token) {
                 //creates a cookie that I can use to verify if a user is logged in
                 document.cookie = "token=" + token;
             });
+            document.cookie = "user=" + email;
         } else {
             // User is signed out.
             var ui = new firebaseui.auth.AuthUI(firebase.auth());
@@ -37,10 +39,10 @@ window.addEventListener('load', function () {
             document.getElementById('orders').hidden = true;  
             // Clear the token cookie.
             document.cookie = "token=";
+            document.cookie = "user=";
         }
-    }, function (eror){
+    }, function (error){
         console.log(error);
         alert('Login failed: ' + error)
     });
 });
-

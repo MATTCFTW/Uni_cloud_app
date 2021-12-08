@@ -38,10 +38,11 @@ function appendData(data) {
         var btn = document.createElement('BUTTON');
         btn.innerHTML = "Order item";
         btn.id = data[i].id_;
+        //item to be passed from clicking the order button
+        var itemClicked = data[i].item;
         //will add the product to users' orders
-        btn.addEventListener('click', () => {
-
-            // orderAdd(user, data[i].item)
+        btn.addEventListener('click', () => {    
+            orderAdd(user, itemClicked)
         })
         //order-button class hides the button for users not logged in
         btn.classList.add("order-button", "btn", "btn-dark");
@@ -65,7 +66,7 @@ function appendData(data) {
             //removes the class
             hiddens[0].classList.remove("order-button");
         }
-  //      var user = getCookie("user")
+        var user = getCookie("user");
     }
     else{
         window.alert("Please log in if you want to make an order")
@@ -78,8 +79,19 @@ function getCookie(name){
     return (value != null) ? unescape(value[1]) : null;
 }
 
-// function orderAdd(user, item, itemId){
-//     console.log(user);
-//     console.log(item);
-//     console.log(itemId);
-// }
+function orderAdd(user, itemClicked){
+    var DataSent = {
+      user: user,
+      item: itemClicked  
+    };
+    $.ajax({
+        url: '/products/clicked',
+        type: 'POST',
+        data: JSON.stringify(DataSent),
+        contentType: 'application/json',
+        dataType: 'json',
+        success : function(){
+            console.log("");
+        }
+    });
+ }

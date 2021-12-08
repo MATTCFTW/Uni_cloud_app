@@ -14,6 +14,7 @@ datastore_client = datastore.Client()
 cluster=MongoClient( "mongodb+srv://Admin:eR4xVrLSpXr7Pecn@assignment.xtiqh.mongodb.net/myFirstDatabase?retryWrites=true&w=majority")
 db=cluster["Assignment"]
 collection=db["Furniture"]
+order_collection = db["Orders"]
 
 app = Flask(__name__)
 
@@ -26,6 +27,14 @@ def index():
 @app.route('/products')
 def products():
     return render_template('products.html')
+
+@app.route('/products/clicked', methods=['POST'])
+def make_order():
+    # getData = request.json
+    post = {"user": "test", "item": "Chair"}
+    order_collection.insert_one(post)
+
+    return ""
 
 @app.route('/orders')
 def orders():
