@@ -30,11 +30,11 @@ def products():
 
 @app.route('/products/clicked', methods=['POST'])
 def make_order():
-    # getData = request.json
-    post = {"user": "test", "item": "Chair"}
-    order_collection.insert_one(post)
+    getData = request.json
+    order_collection.insert_one(getData)
+    response = "Item ordered"
 
-    return ""
+    return response
 
 @app.route('/orders')
 def orders():

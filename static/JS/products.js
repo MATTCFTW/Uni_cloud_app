@@ -90,8 +90,8 @@ function orderAdd(user, itemClicked){
         data: JSON.stringify(DataSent),
         contentType: 'application/json',
         dataType: 'json',
-        success : function(){
-            console.log("");
+        success : function(response){
+            window.alert(response)
         }
     });
  }
