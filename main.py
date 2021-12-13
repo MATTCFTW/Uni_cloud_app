@@ -52,6 +52,13 @@ def user_orders():
     response = requests.get(req.url)
     return(response.content)
 
+#route used for deleting a users order
+@app.route('/orders/delete', methods=['POST'])
+def delete_order():
+    delete_data = request.json
+    order_collection.delete_one(delete_data)
+    response = "Item removed"
+    return response
 
 @app.route('/account')
 def login():

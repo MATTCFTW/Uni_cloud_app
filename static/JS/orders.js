@@ -54,3 +54,20 @@ function getCookie(name){
     return (value != null) ? unescape(value[1]) : null;
 }
 
+//POSTs data to be usable in python
+function deleteOrder(user, itemRemoved){
+    var DataSent = {
+      user: user,
+      item: itemRemoved
+    };
+    $.ajax({
+        url: '/orders/delete',
+        type: 'POST',
+        data: JSON.stringify(DataSent),
+        contentType: 'application/json',
+        dataType: 'json',
+        success : function(response){
+            window.alert(response)
+        }
+    });
+}
