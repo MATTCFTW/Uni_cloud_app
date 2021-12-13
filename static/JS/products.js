@@ -38,16 +38,13 @@ function appendData(data) {
         var btn = document.createElement('BUTTON');
         btn.innerHTML = "Order item";
         btn.id = data[i].id_;
-        //item to be passed from clicking the order button
-        var itemClicked = data[i].item;
-        //will add the product to users' orders
-        btn.addEventListener('click', () => {    
-            orderAdd(user, itemClicked)
-        })
+        //button press passes information to a function
+        btn.addEventListener('click', function() {   
+            orderAdd(user, data[this.id].item);
+        });
         //order-button class hides the button for users not logged in
         btn.classList.add("order-button", "btn", "btn-dark");
 
-        
         //link for getting more info on the product
 
         //append all changes
@@ -82,7 +79,7 @@ function getCookie(name){
 function orderAdd(user, itemClicked){
     var DataSent = {
       user: user,
-      item: itemClicked  
+      item: itemClicked
     };
     $.ajax({
         url: '/products/clicked',

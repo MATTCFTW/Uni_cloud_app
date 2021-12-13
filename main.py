@@ -1,6 +1,7 @@
 import logging, flask, json, requests
 
 from flask import Flask, render_template, request, jsonify
+from requests.models import PreparedRequest
 from pymongo import MongoClient
 from bson.json_util import dumps 
 from google.auth.transport import requests as Requests_google #renamed due to overlap
@@ -9,12 +10,13 @@ import google.oauth2.id_token
 
 firebase_request_adapter = Requests_google.Request()
 datastore_client = datastore.Client()
+req = PreparedRequest()
 
 #MongoDB connection
 cluster=MongoClient( "mongodb+srv://Admin:eR4xVrLSpXr7Pecn@assignment.xtiqh.mongodb.net/myFirstDatabase?retryWrites=true&w=majority")
 db=cluster["Assignment"]
 collection=db["Furniture"]
-order_collection = db["Orders"]
+order_collection=db["Orders"]
 
 app = Flask(__name__)
 
@@ -30,15 +32,26 @@ def products():
 
 @app.route('/products/clicked', methods=['POST'])
 def make_order():
-    getData = request.json
-    order_collection.insert_one(getData)
+    get_data = request.json
+    order_collection.insert_one(get_data)
     response = "Item ordered"
-
     return response
 
+#orders of logged in user
 @app.route('/orders')
 def orders():
     return render_template('orders.html')
+
+#JSON of orders for logged in user
+@app.route('/orders/list', methods=["GET"])
+def user_orders():
+    user = request.cookies.get("user")
+    url = "https://europe-west2-assignment-328920.cloudfunctions.net/user_orders"
+    param = { 'user': user}
+    req.prepare_url(url, param)
+    response = requests.get(req.url)
+    return(response.content)
+
 
 @app.route('/account')
 def login():
