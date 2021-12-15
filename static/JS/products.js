@@ -75,7 +75,7 @@ function getCookie(name){
     var value = re.exec(document.cookie);
     return (value != null) ? unescape(value[1]) : null;
 }
-
+//takes the user email and the item clicked as parameters
 function orderAdd(user, itemClicked){
     var DataSent = {
       user: user,

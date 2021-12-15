@@ -4,20 +4,20 @@ window.addEventListener('load', function () {
     document.getElementById('sign-out').onclick = function () {
         firebase.auth().signOut();
     }; 
-// FirebaseUI config.
+    //FirebaseUI config.
     var uiConfig = {
         signInSuccessUrl: '/',
         signInOptions: [
             //the sign in options I want 
             firebase.auth.GoogleAuthProvider.PROVIDER_ID,
             firebase.auth.EmailAuthProvider.PROVIDER_ID
-        ], 
+        ], //able to add a terms of service url
         tosUrl: '<your-tos-url>'
     };
 
     firebase.auth().onAuthStateChanged(function (user) {
         if (user) {
-            // User is signed in, so display the "sign out" button and login info.
+            //user is signed in, so display the "sign out" button, login info, and order button.
             document.getElementById('sign-out').hidden = false;
             document.getElementById('login-info').hidden = false; 
             document.getElementById('orders').hidden = false; 
@@ -26,18 +26,18 @@ window.addEventListener('load', function () {
             user.getIdToken().then(function (token) {
                 //creates a cookie that I can use to verify if a user is logged in
                 document.cookie = "token=" + token;
-            });
+            });//creates a cookie of the users email so they can be identified in orders
             document.cookie = "user=" + email;
         } else {
-            // User is signed out.
+            //user is signed out.
             var ui = new firebaseui.auth.AuthUI(firebase.auth());
-            // Show the Firebase login button.
+            //show the Firebase login button.
             ui.start('#firebaseui-auth-container', uiConfig);
-            // Update the login state indicators.
+            //hide user exclusive things
             document.getElementById('sign-out').hidden = true;
             document.getElementById('login-info').hidden = true;
             document.getElementById('orders').hidden = true;  
-            // Clear the token cookie.
+            //clear cookies.
             document.cookie = "token=";
             document.cookie = "user=";
         }

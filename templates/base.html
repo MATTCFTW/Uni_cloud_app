@@ -29,6 +29,7 @@
    <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav ml-auto">
      {% for href, id, caption in navigation_bar %}
+     <!-- nav active state updater doesnt work, but it didn't work in the code demo either -->
       {% if id == active_page %}
        <li class="nav-item active">
         <a class="nav-link" href="{{ href|e }}">{{ caption|e }} <span class="sr-only">(current)</span></a>
