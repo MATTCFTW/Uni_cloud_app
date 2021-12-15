@@ -74,6 +74,10 @@ h1{
     padding-bottom: 10px;
 }
 
+.center{
+    text-align: center;
+}
+
 .index-text{
     color: #627482
 }
@@ -88,6 +92,22 @@ h1{
 
 .bg-login{
     background-image: url("/static/images/background2.jpeg") ;
+    height: 89vh;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.bg-products{
+    background-image: url("/static/images/background3.jpeg") ;
+    height: 89vh;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.bg-orders{
+    background-image: url("/static/images/background4.jpeg") ;
     height: 89vh;
     background-position: center;
     background-repeat: no-repeat;
@@ -123,6 +143,7 @@ h1{
     outline-style: solid;
     outline-color: #262626;
     outline-width:thin;
+    background-color: rgba(255, 255, 255, 0.5)
 } 
 
 .order-button{
@@ -144,7 +165,10 @@ h1{
 }
 
 .cart-container{
-    max-width: 50%;
+    max-width: 30%;
+    margin:auto;
+    transform: translate(0, 50%);
+    background-color: rgba(255, 255, 255, 0.5)
 }
 
 .order-title{
@@ -153,10 +177,6 @@ h1{
     font-weight: 500;
     font-family: monospace;
 }
-
-.order-box{
-    text-align: left;
-} 
 
 @media only screen and (max-width: 1090px) {
   .title-404 {

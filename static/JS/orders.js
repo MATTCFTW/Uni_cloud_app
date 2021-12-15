@@ -24,7 +24,7 @@ function displayOrders(data){
     //for each item of furniture
     for (var i = 0; i < data.length; i++) {
         var div = document.createElement('div');
-        div.classList.add("order-box");
+        div.classList.add("order-box", "text-center");
         //updates overall div
         mainContainer.appendChild(div);
         //display item information in <P>
@@ -41,9 +41,9 @@ function displayOrders(data){
             deleteOrder(user, this.id);  
         })
         //order-button class hides the button for users not logged in
-        btn.classList.add("btn", "btn-dark");
-        mainContainer.appendChild(text);
-        mainContainer.appendChild(btn);
+        btn.classList.add("btn", "btn-dark","btn-centering");
+        div.appendChild(text);
+        div.appendChild(btn);
     }
 }
 
