@@ -3,7 +3,7 @@ import unittest
 
 
 class FlaskTest(unittest.TestCase):
-    #check for status 200 on all shown pages
+    #check for status 200 on pages
     def test_index(self):
         tester = app.test_client(self)
         response= tester.get("/index", content_type="html/text")

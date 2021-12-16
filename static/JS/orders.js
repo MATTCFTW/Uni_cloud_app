@@ -41,7 +41,7 @@ function displayOrders(data){
             deleteOrder(user, this.id);  
         })
         //order-button class hides the button for users not logged in
-        btn.classList.add("btn", "btn-dark","btn-centering");
+        btn.classList.add("btn", "btn-dark");
         div.appendChild(text);
         div.appendChild(btn);
     }
